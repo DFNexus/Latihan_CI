@@ -11,13 +11,13 @@ use App\Models\TransactionDetailModel;
 
 class ApiController extends ResourceController
 {
-    protected $apikey;
+    protected $apiKey;
     protected $user;
     protected $transaction;
     protected $transaction_detail;
 
     function __construct() {
-    $this->apikey = env('API_KEY');
+    $this->apiKey = env('API_KEY');
     $this->user = new UserModel();
     $this->transaction = new TransactionModel();
     $this->transaction_detail = new TransactionDetailModel();
@@ -43,7 +43,7 @@ class ApiController extends ResourceController
     });
 
     if(array_key_exists("Key", $headers)){
-        if ($headers["Key"] == $this->apiKey) {
+        if ($headers["Key"] == "$this->apiKey") {
             $penjualan = $this->transaction->findAll();
             
             foreach ($penjualan as &$pj) {
