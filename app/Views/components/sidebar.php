@@ -29,10 +29,19 @@
                 <i class="bi bi-receipt"></i>
                 <span>Produk</span>
             </a>
-        </li><!-- End Produk Nav -->         <li class="nav-item">
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link <?php echo (uri_string() == 'profile') ? "" : "collapsed" ?>" href="profile">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+            </a>
+        </li>
+        <!-- End Produk Nav --> 
+        <li class="nav-item">
             <a class="nav-link <?php echo (uri_string() == 'faq') ? "" : "collapsed" ?>" href="faq">
                 <i class="bi bi-info"></i>
-                <span>Faq</span>
+                <span>F.A.Q</span>
             </a>
         </li><!-- End Faq Nav --> 
     </ul>

@@ -52,7 +52,7 @@ if(uri_string()!=""){
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Data Tables</h1>
+      <h1>Checkout</h1>
       <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">Home</li>
