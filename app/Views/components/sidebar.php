@@ -17,6 +17,20 @@
             </a>
         </li><!-- End Keranjang Nav --> 
 
+        <!-- menu diskon -->
+
+                <?php if (session()->get('role') === 'admin') : ?>
+        <li class="nav-item">
+            <a class="nav-link <?= (uri_string() == 'diskon') ? '' : 'collapsed' ?>" href="<?= base_url('diskon') ?>">
+                <i class="bi bi-percent"></i>
+                <span>Diskon</span>
+            </a>
+        </li>
+        <?php endif; ?>
+
+        <!-- end menu diskon -->
+         
+        
         <li class="nav-item">
             <a class="nav-link <?php echo (uri_string() == 'produk_category') ? "" : "collapsed" ?>" href="produk_category">
                 <i class="bi bi-cart-check"></i>

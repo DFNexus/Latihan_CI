@@ -29,7 +29,7 @@ class ApiController extends ResourceController
      * 
      * 
      */
-    public function index()
+   public function index()
 {
     $data = [ 
         'results' => [],
@@ -42,22 +42,32 @@ class ApiController extends ResourceController
         $value = $value->getValue();
     });
 
-    if(array_key_exists("Key", $headers)){
+    if (array_key_exists("Key", $headers)) {
         if ($headers["Key"] == "$this->apiKey") {
             $penjualan = $this->transaction->findAll();
-            
+
             foreach ($penjualan as &$pj) {
-                $pj['details'] = $this->transaction_detail->where('transaction_id', $pj['id'])->findAll();
+                // Ambil semua detail transaksi
+                $details = $this->transaction_detail->where('transaction_id', $pj['id'])->findAll();
+
+                // Hitung total jumlah item
+                $jumlah_item = 0;
+                foreach ($details as $d) {
+                    $jumlah_item += $d['jumlah'];
+                }
+
+                $pj['jumlah_item'] = $jumlah_item; 
+                $pj['details'] = $details;
             }
 
             $data['status'] = ["code" => 200, "description" => "OK"];
-            $data['results'] = $penjualan;
-
+             $data['results'] = $penjualan;
         }
     } 
 
     return $this->respond($data);
 }
+
 
     /**
      * Return the properties of a resource object.

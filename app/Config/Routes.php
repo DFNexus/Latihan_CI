@@ -25,7 +25,6 @@ $routes->group('produk_category', ['filter' => 'auth'], function ($routes) {
     $routes->post('edit/(:any)', 'ProdukCategoryController::edit/$1');
     $routes->get('delete/(:any)', 'ProdukCategoryController::delete/$1');
     $routes->get('produk/download', 'ProdukController::download');
-
 });
 
 $routes->group('keranjang', ['filter' => 'auth'], function ($routes) {
@@ -45,5 +44,12 @@ $routes->get('get-cost', 'TransaksiController::getCost', ['filter' => 'auth']);
 $routes->get('profile', 'Home::profile', ['filter' => 'auth']);
 $routes->get('/keranjang', 'TransaksiController::index', ['filter' => 'auth']);
 $routes->get('/faq' ,'Home::faq',['filter' => 'auth']);
+
+$routes->group('diskon', ['filter' => 'auth'], function ($routes) {
+    $routes->get('', 'DiskonController::index');                     
+    $routes->post('create', 'DiskonController::create');              
+    $routes->post('update/(:num)', 'DiskonController::update/$1');    
+    $routes->get('delete/(:num)', 'DiskonController::delete/$1');    
+});
 
 $routes->resource('api', ['controller' => 'apiController']);
